@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domestix | At-Home Vacuum Repair Essex | Dyson Specialists</title>
+  <meta name="description" content="Domestix repairs your vacuum in your home across Essex — no need to take it away. Dyson specialists and all major brands. Fixed call-out fee. Book today.">
+  <script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"LocalBusiness","name":"Domestix",
+    "description":"Expert at-home vacuum cleaner repair and servicing in Essex. Dyson specialists and all major brands.",
+    "url":"https://domestix.co.uk","telephone":"+441234567890","email":"hello@domestix.co.uk",
+    "address":{"@type":"PostalAddress","streetAddress":"YOUR STREET","addressLocality":"Chelmsford","addressRegion":"Essex","postalCode":"CM1 1AA","addressCountry":"GB"},
+    "areaServed":["Chelmsford","Southend-on-Sea","Colchester","Basildon","Brentwood","Harlow","Romford","Ilford","Braintree","Essex"],
+    "priceRange":"££","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"200"}
+  }</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #2d7a4f; --green-light: #e8f5ee; --green-mid: #3d9e68;
+      --dark: #1a1a2e; --charcoal: #2d2d3a; --text: #3a3a4a; --muted: #6b7280;
+      --white: #fff; --off-white: #f8faf9; --border: #e2e8e4; --gold: #f59e0b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--green); letter-spacing: -0.5px; cursor: pointer; }
+    .logo span { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; cursor: pointer; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta { background: var(--green); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background 0.2s; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+    .nav-cta:hover { background: var(--green-mid); }
+    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; border-radius: 8px; }
+    .burger span { display: block; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; transform-origin: center; }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: white; z-index: 99; flex-direction: column; padding: 1.5rem 5%; overflow-y: auto; }
+    .mobile-menu.open { display: flex; }
+    .mm-section { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 0.5rem; }
+    .mobile-menu a, .mobile-menu button { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; font-weight: 600; color: var(--dark); text-decoration: none; background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; text-align: left; width: 100%; transition: color 0.2s; }
+    .mobile-menu a:hover, .mobile-menu button:hover { color: var(--green); }
+    .mm-cta { margin-top: 0.75rem !important; background: var(--green) !important; color: white !important; border-radius: 12px !important; padding: 1rem 1.5rem !important; border: none !important; justify-content: center !important; border-bottom: none !important; }
+    .mm-cta-dark { background: var(--dark) !important; }
+
+    /* PAGES */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d4a35 60%, #2d7a4f 100%); color: white; padding: 80px 5%; display: flex; align-items: center; gap: 4rem; min-height: 90vh; overflow: hidden; position: relative; }
+    .hero-content { flex: 1; max-width: 560px; position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; color: #a7f3c8; }
+    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.2rem; letter-spacing: -1px; }
+    .hero h1 em { font-style: normal; color: #6ee7a0; }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.82); margin-bottom: 2rem; line-height: 1.75; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-primary { background: var(--green-mid); color: white; border: none; padding: 0.9rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-primary:hover { background: #4ab87a; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 0.9rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 900; color: #6ee7a0; }
+    .hero-stat span { font-size: 0.8rem; color: rgba(255,255,255,0.65); }
+
+    /* HERO IMAGE STACK */
+    .hero-visual { flex: 1; position: relative; height: 520px; max-width: 480px; }
+    .hero-img-main { position: absolute; right: 0; top: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .hero-card { position: absolute; background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; padding: 0.9rem 1.1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-card-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-card h4 { font-size: 0.85rem; font-weight: 700; color: white; }
+    .hero-card p { font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+    .hc1 { bottom: 60px; left: -20px; }
+    .hc2 { top: 30px; left: -30px; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--green); color: white; padding: 1rem 5%; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; font-size: 0.9rem; font-weight: 500; }
+    .trust-item { display: flex; align-items: center; gap: 0.5rem; }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-label { color: var(--green); font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--dark); letter-spacing: -0.5px; margin-bottom: 0.8rem; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; }
+    .section-header { margin-bottom: 3rem; }
+
+    /* SERVICES */
+    .services { background: var(--off-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .service-card { background: white; border-radius: 16px; padding: 2rem; border: 1px solid var(--border); transition: all 0.25s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(45,122,79,0.12); transform: translateY(-3px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon-wrap { width: 52px; height: 52px; background: var(--green-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--dark); }
+    .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .service-price { font-weight: 700; color: var(--green); font-size: 0.92rem; }
+    .featured-badge { position: absolute; top: 1rem; right: 1rem; background: var(--green-light); color: var(--green); font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 50px; }
+    .pricing-notice { background: var(--green-light); border: 1px solid #b6dfc8; border-radius: 12px; padding: 1rem 1.5rem; margin-top: 2rem; font-size: 0.92rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .pricing-notice strong { display: block; margin-bottom: 0.2rem; color: var(--dark); }
+
+    /* BRANDS SHOWCASE */
+    .brands-section { background: var(--off-white); }
+    .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+    .brand-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+    .brand-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .brand-card:hover { box-shadow: 0 8px 28px rgba(45,122,79,0.13); transform: translateY(-3px); border-color: var(--green); }
+    .brand-card:hover::before { transform: scaleX(1); }
+    .brand-img-wrap { height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .brand-img-wrap img { max-height: 110px; max-width: 100%; object-fit: contain; transition: transform 0.3s; }
+    .brand-card:hover .brand-img-wrap img { transform: scale(1.05); }
+    .brand-card h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 0.2rem; }
+    .brand-card p { font-size: 0.78rem; color: var(--muted); }
+    .brand-card.featured { border-color: var(--green); background: var(--green-light); }
+    .brand-featured-tag { display: inline-block; background: var(--green); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 50px; margin-bottom: 0.4rem; }
+    .more-brands { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+    .brand-chip { background: white; border: 1px solid var(--border); padding: 0.55rem 1.4rem; border-radius: 50px; font-weight: 600; font-size: 0.88rem; color: var(--charcoal); transition: all 0.2s; }
+    .brand-chip:hover { border-color: var(--green); color: var(--green); }
+
+    /* WHY */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+    .why-point { display: flex; gap: 1rem; }
+    .why-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--green-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why-point h4 { font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .why-point p { font-size: 0.9rem; color: var(--muted); }
+    .eco-panel { background: linear-gradient(135deg, var(--green) 0%, #1a5c38 100%); color: white; border-radius: 24px; padding: 2.5rem; }
+    .eco-panel h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+    .eco-panel p { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; line-height: 1.7; }
+    .eco-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .eco-stat { background: rgba(255,255,255,0.12); border-radius: 12px; padding: 1rem; text-align: center; }
+    .eco-stat strong { display: block; font-size: 1.6rem; font-weight: 900; }
+    .eco-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+
+    /* AREAS */
+    .areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
+    .area-chip { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.88rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.2s; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+    .area-chip:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+    .area-chip.home { background: var(--green-light); border-color: var(--green); color: var(--green); }
+
+    /* PROCESS */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+    .step { text-align: center; }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--green); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .step h4 { font-weight: 700; margin-bottom: 0.4rem; color: var(--dark); }
+    .step p { font-size: 0.88rem; color: var(--muted); }
+
+    /* REVIEWS */
+    .reviews { background: var(--off-white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .review-card { background: white; border-radius: 16px; padding: 1.8rem; border: 1px solid var(--border); }
+    .stars { display: flex; gap: 2px; margin-bottom: 0.8rem; }
+    .review-card blockquote { font-size: 0.92rem; color: var(--text); font-style: italic; margin-bottom: 1rem; line-height: 1.7; }
+    .reviewer { font-weight: 700; font-size: 0.88rem; color: var(--dark); }
+    .reviewer span { color: var(--muted); font-weight: 400; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%); color: white; text-align: center; padding: 90px 5%; }
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 1rem; letter-spacing: -0.5px; }
+    .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2.5rem; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-white { background: white; color: var(--green); border: none; padding: 1rem 2.5rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-white:hover { background: #f0fdf4; transform: translateY(-1px); }
+
+    /* FAQ */
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; background: white; padding: 1.2rem 1.5rem; font-weight: 700; font-size: 0.97rem; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--dark); transition: background 0.2s; gap: 1rem; }
+    .faq-q:hover { background: var(--off-white); }
+    .faq-chevron { transition: transform 0.3s; flex-shrink: 0; }
+    .faq-q.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { background: var(--off-white); padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s; font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+    .faq-a.open { padding: 1rem 1.5rem 1.2rem; max-height: 300px; }
+
+    /* SUBPAGES */
+    .subpage-hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d4a35 60%, #2d7a4f 100%); color: white; padding: 50px 5%; }
+    .subpage-hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+    .subpage-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.85rem; cursor: pointer; margin-bottom: 1.2rem; border: none; background: none; transition: color 0.2s; }
+    .subpage-back:hover { color: white; }
+    .sp-label { color: #a7f3c8; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .subpage-hero h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; color: white; margin-bottom: 0.8rem; letter-spacing: -0.5px; line-height: 1.15; }
+    .subpage-hero p { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .sp-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .sp-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.85rem; border-radius: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* BRAND HERO IMAGE */
+    .brand-hero-img { width: 200px; height: 200px; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); animation: float 4s ease-in-out infinite; flex-shrink: 0; }
+
+    .sp-cta-card { background: white; border-radius: 20px; padding: 1.8rem; min-width: 260px; max-width: 290px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .sp-cta-card .card-title { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 0.3rem; }
+    .sp-cta-card .card-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .cta-btn-main { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; background: var(--green); color: white; border: none; border-radius: 10px; padding: 0.9rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; margin-bottom: 0.6rem; transition: background 0.2s; }
+    .cta-btn-main:hover { background: var(--green-mid); }
+    .cta-btn-call { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; background: var(--dark); color: white; border: none; border-radius: 10px; padding: 0.9rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .cta-btn-call:hover { background: var(--charcoal); }
+    .cta-divider { text-align: center; font-size: 0.75rem; color: var(--muted); margin: 0.5rem 0; }
+    .cta-trust { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .cta-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--muted); }
+
+    .sp-body { max-width: 1100px; margin: 0 auto; padding: 50px 5%; display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+    .sp-main h2 { font-size: 1.25rem; font-weight: 800; color: var(--dark); margin: 2rem 0 0.6rem; }
+    .sp-main h2:first-child { margin-top: 0; }
+    .sp-main p { color: var(--text); line-height: 1.8; margin-bottom: 0.8rem; font-size: 0.95rem; }
+    .sp-main ul { margin: 0.5rem 0 1rem 0; list-style: none; }
+    .sp-main li { color: var(--text); line-height: 1.9; font-size: 0.93rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.8rem; align-items: flex-start; }
+    .sp-main li:last-child { border-bottom: none; }
+
+    /* BRAND MODELS GALLERY */
+    .models-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+    .model-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 0.75rem; text-align: center; transition: all 0.2s; }
+    .model-card:hover { border-color: var(--green); background: var(--green-light); }
+    .model-card img { width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.5rem; }
+    .model-card span { font-size: 0.78rem; font-weight: 700; color: var(--dark); display: block; }
+
+    .sp-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 1rem; }
+    .sw { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.3rem; }
+    .sw h4 { font-size: 0.9rem; font-weight: 800; color: var(--dark); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sidebar-review { font-size: 0.82rem; font-style: italic; color: var(--text); line-height: 1.6; margin-bottom: 0.5rem; }
+    .sidebar-reviewer { font-size: 0.78rem; font-weight: 700; color: var(--dark); }
+    .sidebar-stars { display: flex; gap: 2px; margin-bottom: 0.4rem; }
+
+    .inline-cta { background: var(--green-light); border: 1px solid #b6dfc8; border-radius: 14px; padding: 1.3rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; }
+    .inline-cta p { font-size: 0.92rem; font-weight: 600; color: var(--dark); margin: 0; }
+    .inline-cta span { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.2rem; }
+    .inline-cta a { background: var(--green); color: white; padding: 0.65rem 1.3rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; white-space: nowrap; transition: background 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .inline-cta a:hover { background: var(--green-mid); }
+
+    .sp-bottom-cta { background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%); color: white; padding: 60px 5%; text-align: center; }
+    .sp-bottom-cta h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; margin-bottom: 0.8rem; }
+    .sp-bottom-cta p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 1rem; }
+    .bottom-cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 3rem 5% 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-logo { font-size: 1.4rem; font-weight: 900; color: white; margin-bottom: 0.8rem; }
+    footer p { font-size: 0.88rem; line-height: 1.7; }
+    .footer-col h5 { color: white; font-weight: 700; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; cursor: pointer; }
+    .footer-col a:hover { color: #6ee7a0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; font-size: 0.82rem; flex-wrap: wrap; gap: 0.5rem; }
+
+    @media (max-width: 960px) {
+      .subpage-hero-inner { grid-template-columns: 1fr; }
+      .sp-cta-card { display: none; }
+      .sp-body { grid-template-columns: 1fr; }
+      .sp-sidebar { position: static; }
+      .brand-hero-img { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 60px 5%; min-height: auto; gap: 2rem; }
+      .hero-visual { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      nav .nav-links, nav .nav-cta { display: none; }
+      .burger { display: flex; }
+      .trust-bar { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="ic-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="13" x2="23" y2="11"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/></symbol>
+  <symbol id="ic-motor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></symbol>
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ic-service" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></symbol>
+  <symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-pound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18H18M8 13h7M10 13V9a4 4 0 0 1 8 0"/><path d="M8 18c0-2 2-5 2-5"/></symbol>
+  <symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="ic-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="ic-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="ic-vacuum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h10l2-6h4l1 6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 12V7a2 2 0 0 1 2-2h3"/></symbol>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="showHome()">Domes<span>tix</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showHome();scrollToId('services')">Services</a></li>
+    <li><a onclick="showHome();scrollToId('why-us')">Why Us</a></li>
+    <li><a onclick="showHome();scrollToId('areas')">Areas</a></li>
+    <li><a onclick="showHome();scrollToId('reviews')">Reviews</a></li>
+    <li><a onclick="showHome();scrollToId('faq')">FAQ</a></li>
+  </ul>
+  <a href="#book" class="nav-cta" onclick="showHome()"><svg width="15" height="15" class="icon"><use href="#ic-calendar"/></svg> Book a Repair</a>
+  <button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mm-section">Services</div>
+  <button onclick="closeThen(()=>showBrand('dyson'))"><svg width="18" height="18"><use href="#ic-vacuum"/></svg> Dyson Repair</button>
+  <button onclick="closeThen(()=>showBrand('shark'))"><svg width="18" height="18"><use href="#ic-wrench"/></svg> Shark Repair</button>
+  <button onclick="closeThen(()=>showBrand('miele'))"><svg width="18" height="18"><use href="#ic-wrench"/></svg> Miele Repair</button>
+  <button onclick="closeThen(()=>showBrand('henry'))"><svg width="18" height="18"><use href="#ic-wrench"/></svg> Henry Repair</button>
+  <button onclick="closeThen(()=>showBrand('hoover'))"><svg width="18" height="18"><use href="#ic-wrench"/></svg> Hoover Repair</button>
+  <div class="mm-section">Areas</div>
+  <button onclick="closeThen(()=>showLocation('chelmsford'))"><svg width="18" height="18"><use href="#ic-pin"/></svg> Chelmsford</button>
+  <button onclick="closeThen(()=>showLocation('southend'))"><svg width="18" height="18"><use href="#ic-pin"/></svg> Southend-on-Sea</button>
+  <button onclick="closeThen(()=>showLocation('colchester'))"><svg width="18" height="18"><use href="#ic-pin"/></svg> Colchester</button>
+  <button onclick="closeThen(()=>showLocation('romford'))"><svg width="18" height="18"><use href="#ic-pin"/></svg> Romford</button>
+  <button onclick="closeThen(()=>{showHome();scrollToId('areas')})"><svg width="18" height="18"><use href="#ic-pin"/></svg> View All Areas</button>
+  <div class="mm-section">Info</div>
+  <button onclick="closeThen(()=>{showHome();scrollToId('why-us')})"><svg width="18" height="18"><use href="#ic-leaf"/></svg> Why Choose Us</button>
+  <button onclick="closeThen(()=>{showHome();scrollToId('faq')})"><svg width="18" height="18"><use href="#ic-info"/></svg> FAQ</button>
+  <a href="tel:01234567890" class="mm-cta" onclick="closeMenu()"><svg width="18" height="18" style="stroke:white"><use href="#ic-phone"/></svg> 01234 567 890</a>
+  <a href="mailto:hello@domestix.co.uk" class="mm-cta mm-cta-dark" onclick="closeMenu()"><svg width="18" height="18" style="stroke:white"><use href="#ic-calendar"/></svg> Book a Repair</a>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><svg width="14" height="14" style="stroke:#6ee7a0"><use href="#ic-leaf"/></svg> Repair. Don't Replace. Save Money &amp; The Planet.</div>
+      <h1>Your Vacuum Fixed,<br><em>Not Replaced.</em></h1>
+      <p>Professional vacuum repair and servicing — carried out in your home across Essex. No need to take it anywhere. Dyson specialists and all major brands, with a fixed call-out fee and 3-month parts guarantee.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-primary"><svg width="17" height="17"><use href="#ic-calendar"/></svg> Book a Home Visit</a>
+        <a href="tel:01234567890" class="btn-outline"><svg width="17" height="17"><use href="#ic-phone"/></svg> Call Us Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>3,500+</strong><span>Vacuums Repaired</span></div>
+        <div class="hero-stat"><strong>4.9★</strong><span>Google Rating</span></div>
+        <div class="hero-stat"><strong>80%</strong><span>Cheaper Than New</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-img-main" src="https://images.ctfassets.net/oqg67vmf6aj9/2UMzr01JlSHkViNpBdxsNo/a2d6c83d3a90c73b46f6f04e088bcf0b/v15_detect_hero.png" alt="Dyson V15 Detect" onerror="this.src='https://www.dyson.co.uk/content/dam/dyson/images/products/primary/447189-01.png';this.onerror=null">
+      <div class="hero-card hc1">
+        <div class="hero-card-icon"><svg width="20" height="20" style="stroke:white"><use href="#ic-home"/></svg></div>
+        <div><h4>Fully At-Home Service</h4><p>We repair in your home — no need to go anywhere</p></div>
+      </div>
+      <div class="hero-card hc2">
+        <div class="hero-card-icon"><svg width="20" height="20" style="stroke:white"><use href="#ic-shield"/></svg></div>
+        <div><h4>3-Month Parts Guarantee</h4><p>All parts covered for peace of mind</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><svg width="16" height="16" style="stroke:white"><use href="#ic-home"/></svg> At-home service — we come to you</div>
+    <div class="trust-item"><svg width="16" height="16" style="stroke:white"><use href="#ic-pound"/></svg> Fixed call-out fee</div>
+    <div class="trust-item"><svg width="16" height="16" style="stroke:white"><use href="#ic-bolt"/></svg> Same-day available</div>
+    <div class="trust-item"><svg width="16" height="16" style="stroke:white"><use href="#ic-shield"/></svg> 3-month guarantee</div>
+    <div class="trust-item"><svg width="16" height="16" style="fill:white"><use href="#ic-star"/></svg> 4.9 Google Rating</div>
+  </div>
+
+  <section class="services" id="services">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">At-Home Vacuum &amp; Appliance Repair</h2>
+      <p class="section-sub">Our technician comes to your home and repairs your vacuum on the spot. No need to take it away — we bring the workshop to you.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="featured-badge">Most Popular</div>
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-vacuum"/></svg></div>
+        <h3>Dyson Repair &amp; Service</h3>
+        <p>All Dyson models repaired in your home. Loss of suction, battery faults, brush bar issues, motor problems — diagnosed and fixed on the spot.</p>
+        <div class="service-price">Fixed call-out · All Dyson models</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-service"/></svg></div>
+        <h3>Annual Vacuum Service</h3>
+        <p>Full at-home strip-down, deep clean, filter replacement and performance check. Your vacuum serviced in your living room — no drop-off needed.</p>
+        <div class="service-price">Fixed call-out · All brands</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-battery"/></svg></div>
+        <h3>Battery Replacement</h3>
+        <p>We carry replacement batteries for Dyson V6 through to V15 in our van. Swapped out at your home — usually takes under 30 minutes.</p>
+        <div class="service-price">Fixed call-out + parts · Same-day available</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-motor"/></svg></div>
+        <h3>Motor &amp; Suction Repair</h3>
+        <p>Lost suction or unusual noises? We diagnose and fix motor issues across all brands in your home, with common parts carried in our van.</p>
+        <div class="service-price">Fixed call-out + parts if required</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-home"/></svg></div>
+        <h3>Small Appliance Repair</h3>
+        <p>We also repair selected household appliances at home. Get in touch to check if we can help — in most cases we can fix it on the spot.</p>
+        <div class="service-price">Fixed call-out · Contact for details</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap"><svg width="26" height="26" style="stroke:var(--green)"><use href="#ic-wrench"/></svg></div>
+        <h3>All Major Brands</h3>
+        <p>Not just Dyson — we repair Shark, Miele, Henry, Hoover, Vax, Bosch, Sebo and more, all in the comfort of your own home.</p>
+        <div class="service-price">Fixed call-out · Ask us about your brand</div>
+      </div>
+    </div>
+    <div class="pricing-notice">
+      <svg width="20" height="20" style="stroke:var(--green);margin-top:2px;flex-shrink:0"><use href="#ic-info"/></svg>
+      <div><strong>Simple, Transparent Pricing</strong>We charge a fixed call-out fee for your home visit. Any parts needed are quoted and charged separately — you'll always know the full cost before we proceed.</div>
+    </div>
+  </section>
+
+  <!-- BRANDS SHOWCASE -->
+  <section class="brands-section" id="brands">
+    <div class="section-header">
+      <div class="section-label">Brands We Repair</div>
+      <h2 class="section-title">Dyson Specialists &amp; All Major Brands</h2>
+      <p class="section-sub">Click a brand to see models we repair, common faults we fix and how we can help.</p>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-card featured" onclick="showBrand('dyson')">
+        <div class="brand-featured-tag">★ Our Speciality</div>
+        <div class="brand-img-wrap">
+          <img src="https://images.ctfassets.net/oqg67vmf6aj9/2UMzr01JlSHkViNpBdxsNo/a2d6c83d3a90c73b46f6f04e088bcf0b/v15_detect_hero.png" alt="Dyson" onerror="this.parentElement.innerHTML='<div style=\'font-size:2.5rem;font-weight:900;color:var(--green)\'>DYSON</div>'">
+        </div>
+        <h3>Dyson</h3>
+        <p>All cordless, upright &amp; cylinder models</p>
+      </div>
+      <div class="brand-card" onclick="showBrand('shark')">
+        <div class="brand-img-wrap">
+          <img src="https://cdn.sharkclean.co.uk/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/z/iz320uk_2.png" alt="Shark" onerror="this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:900;color:var(--dark)\'>SHARK</div>'">
+        </div>
+        <h3>Shark</h3>
+        <p>Anti Hair Wrap, Flexology &amp; cordless</p>
+      </div>
+      <div class="brand-card" onclick="showBrand('miele')">
+        <div class="brand-img-wrap">
+          <img src="https://www.miele.co.uk/media/products/1440x1440/10604580_1440x1440.png" alt="Miele" onerror="this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:900;color:var(--dark)\'>MIELE</div>'">
+        </div>
+        <h3>Miele</h3>
+        <p>Complete C3, Triflex &amp; all cylinder</p>
+      </div>
+      <div class="brand-card" onclick="showBrand('henry')">
+        <div class="brand-img-wrap">
+          <img src="https://www.henryvacuum.com/wp-content/uploads/2020/09/Henry-HVR-200.png" alt="Henry" onerror="this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:900;color:var(--dark)\'>HENRY</div>'">
+        </div>
+        <h3>Henry</h3>
+        <p>HVR 200, Hetty, Harry &amp; more</p>
+      </div>
+      <div class="brand-card" onclick="showBrand('hoover')">
+        <div class="brand-img-wrap">
+          <img src="https://www.hoover.co.uk/medias/HF9-HF910H-011.png?context=bWFzdGVyfHJvb3R8MTYwOTgwfGltYWdlL3BuZ3xoMGIvaDlkLzk1NjcxOTM4NDM0ODYucG5nfDQyMGY0NWMwNjk4NmU0NjNkNjU4MTk2YTBjMzJkNGI1YzIwN2IzNmEwOWE0ZTkzNDk3NGViMTg4MzJhNTFmZmM" alt="Hoover" onerror="this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:900;color:var(--dark)\'>HOOVER</div>'">
+        </div>
+        <h3>Hoover</h3>
+        <p>H-Free, H-Upright &amp; all models</p>
+      </div>
+    </div>
+    <div class="more-brands" style="margin-top:1.5rem">
+      <div class="brand-chip">Bosch</div>
+      <div class="brand-chip">Vax</div>
+      <div class="brand-chip">Sebo</div>
+      <div class="brand-chip">Karcher</div>
+      <div class="brand-chip">Bissell</div>
+      <div class="brand-chip">Electrolux</div>
+      <div class="brand-chip">Numatic</div>
+      <div class="brand-chip">+ Many More</div>
+    </div>
+  </section>
+
+  <section id="why-us">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Choose Domestix</div>
+        <h2 class="section-title">The Easiest Way to Get Your Vacuum Fixed</h2>
+        <div class="why-points">
+          <div class="why-point"><div class="why-icon"><svg width="22" height="22" style="stroke:var(--green)"><use href="#ic-home"/></svg></div><div><h4>We Come To You</h4><p>No need to take your vacuum anywhere. Our technician visits your home, diagnoses the fault and repairs it on the spot — usually in under an hour.</p></div></div>
+          <div class="why-point"><div class="why-icon"><svg width="22" height="22" style="stroke:var(--green)"><use href="#ic-pound"/></svg></div><div><h4>Save Up To 80% vs Buying New</h4><p>A new Dyson costs £300–£700. Most repairs cost a fraction of that — and you don't even have to leave the house.</p></div></div>
+          <div class="why-point"><div class="why-icon"><svg width="22" height="22" style="stroke:var(--green)"><use href="#ic-wrench"/></svg></div><div><h4>Expert Dyson Technicians</h4><p>Dyson is our speciality. We carry the most common parts in our van so most repairs are completed on the first visit.</p></div></div>
+          <div class="why-point"><div class="why-icon"><svg width="22" height="22" style="stroke:var(--green)"><use href="#ic-check"/></svg></div><div><h4>Fixed Call-Out, Transparent Parts</h4><p>One clear fee for your home visit. Any parts needed are quoted separately before we start — no surprises.</p></div></div>
+        </div>
+      </div>
+      <div class="eco-panel">
+        <h3><svg width="22" height="22" style="stroke:white"><use href="#ic-leaf"/></svg> The Greener Choice</h3>
+        <p>Every year, millions of vacuum cleaners end up in landfill when a simple repair could extend their life by years. Choosing Domestix means choosing a repair-first approach — better for your pocket and for the planet.</p>
+        <div class="eco-stats">
+          <div class="eco-stat"><strong>7 yrs</strong><span>Average life added by a full service</span></div>
+          <div class="eco-stat"><strong>23kg</strong><span>CO₂ saved vs buying new</span></div>
+          <div class="eco-stat"><strong>100%</strong><span>Parts reused or recycled where possible</span></div>
+          <div class="eco-stat"><strong>£250+</strong><span>Average saving per customer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="areas" style="background:var(--off-white)">
+    <div class="section-header">
+      <div class="section-label">Areas We Cover</div>
+      <h2 class="section-title">At-Home Repairs Across Essex &amp; East London</h2>
+      <p class="section-sub">Based in Chelmsford, we visit homes across a 30-mile radius. Click your area for more information.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-chip home" onclick="showLocation('chelmsford')"><svg width="14" height="14" style="stroke:var(--green)"><use href="#ic-pin"/></svg> Chelmsford</div>
+      <div class="area-chip" onclick="showLocation('southend')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Southend-on-Sea</div>
+      <div class="area-chip" onclick="showLocation('colchester')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Colchester</div>
+      <div class="area-chip" onclick="showLocation('basildon')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Basildon</div>
+      <div class="area-chip" onclick="showLocation('brentwood')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Brentwood</div>
+      <div class="area-chip" onclick="showLocation('harlow')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Harlow</div>
+      <div class="area-chip" onclick="showLocation('romford')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Romford</div>
+      <div class="area-chip" onclick="showLocation('ilford')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Ilford</div>
+      <div class="area-chip" onclick="showLocation('braintree')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Braintree</div>
+      <div class="area-chip" onclick="showLocation('witham')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Witham</div>
+      <div class="area-chip" onclick="showLocation('maldon')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Maldon</div>
+      <div class="area-chip" onclick="showLocation('epping')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Epping</div>
+      <div class="area-chip" onclick="showLocation('billericay')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Billericay</div>
+      <div class="area-chip" onclick="showLocation('rayleigh')"><svg width="14" height="14" style="stroke:var(--muted)"><use href="#ic-pin"/></svg> Rayleigh</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="text-align:center">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Fixed At Home in 4 Simple Steps</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">1</div><h4>Book a Home Visit</h4><p>Book online or call us. Tell us about your vacuum and we'll arrange a convenient time to visit your home.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>We Come to You</h4><p>Our technician arrives at your home with a fully stocked van. No need to lift a finger.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Diagnosed &amp; Quoted</h4><p>We diagnose the fault on the spot. Any parts needed are quoted separately before we start work.</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Fixed &amp; Running</h4><p>Most repairs completed on the first visit, in under an hour. Your vacuum is back to full power before we leave.</p></div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="section-header">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">Trusted by Thousands Across Essex</h2>
+      <p class="section-sub">Don't just take our word for it.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">${[1,2,3,4,5].map(()=>`<svg width="16" height="16" style="fill:var(--gold)"><use href="#ic-star"/></svg>`).join('')}</div>
+        <blockquote>"Absolutely brilliant. The technician came to my house in Chelmsford the same day, diagnosed the fault in minutes and had my Dyson V11 running perfectly before he left. Saved me £400 on a new one."</blockquote>
+        <div class="reviewer">Sarah M. <span>— Dyson V11, Chelmsford</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">${[1,2,3,4,5].map(()=>`<svg width="16" height="16" style="fill:var(--gold)"><use href="#ic-star"/></svg>`).join('')}</div>
+        <blockquote>"I was amazed they fix it in your home — I didn't even have to move it. Honest, upfront about pricing, and the job was done in 45 minutes. Highly recommended."</blockquote>
+        <div class="reviewer">James T. <span>— Miele C3, Southend</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">${[1,2,3,4,5].map(()=>`<svg width="16" height="16" style="fill:var(--gold)"><use href="#ic-star"/></svg>`).join('')}</div>
+        <blockquote>"The convenience of having it fixed at home is incredible. Technician was professional, tidy and knew exactly what he was doing. My Dyson works better than the day I bought it."</blockquote>
+        <div class="reviewer">Claire R. <span>— Dyson V8, Brentwood</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & GALLERY -->
+  <section id="trust" style="background:var(--white);padding:60px 5%">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="section-label">Verified &amp; Trusted</div>
+      <h2 class="section-title">Independently Reviewed &amp; Rated</h2>
+      <p class="section-sub" style="margin:0 auto">Our reputation is everything. See what independent platforms say about Domestix.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:900px;margin:0 auto 3.5rem">
+
+      <!-- Checkatrade -->
+      <div style="border:2px solid #00a651;border-radius:20px;padding:2rem;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#00a651"></div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:1rem">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#00a651"/><path d="M12 20l6 6 10-12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:1.4rem;font-weight:900;color:#00a651;letter-spacing:-0.5px">Checkatrade</span>
+        </div>
+        <div style="display:flex;justify-content:center;gap:3px;margin-bottom:0.5rem">
+          ${[1,2,3,4,5].map(()=>`<svg width="22" height="22" style="fill:#00a651"><use href="#ic-star"/></svg>`).join('')}
+        </div>
+        <div style="font-size:2rem;font-weight:900;color:#1a1a2e;line-height:1">9.8 <span style="font-size:1rem;font-weight:600;color:var(--muted)">/ 10</span></div>
+        <div style="font-size:0.82rem;color:var(--muted);margin:0.3rem 0 1.2rem">Based on verified reviews</div>
+        <a href="https://www.checkatrade.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#00a651;color:white;padding:0.6rem 1.3rem;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
+          See Our Reviews
+          <svg width="14" height="14" style="stroke:white"><use href="#ic-arrow-right"/></svg>
+        </a>
+      </div>
+
+      <!-- Google Reviews -->
+      <div style="border:2px solid #4285f4;border-radius:20px;padding:2rem;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#4285f4,#34a853,#fbbc05,#ea4335)"></div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:1rem">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span style="font-size:1.4rem;font-weight:900;color:#1a1a2e;letter-spacing:-0.5px">Google</span>
+        </div>
+        <div style="display:flex;justify-content:center;gap:3px;margin-bottom:0.5rem">
+          ${[1,2,3,4,5].map(()=>`<svg width="22" height="22" style="fill:#fbbc05"><use href="#ic-star"/></svg>`).join('')}
+        </div>
+        <div style="font-size:2rem;font-weight:900;color:#1a1a2e;line-height:1">4.9 <span style="font-size:1rem;font-weight:600;color:var(--muted)">/ 5</span></div>
+        <div style="font-size:0.82rem;color:var(--muted);margin:0.3rem 0 1.2rem">200+ verified Google reviews</div>
+        <a href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#4285f4;color:white;padding:0.6rem 1.3rem;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
+          See Our Reviews
+          <svg width="14" height="14" style="stroke:white"><use href="#ic-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PHOTO GALLERY -->
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title" style="margin-bottom:0.4rem">Real Repairs. Real Results.</h2>
+      <p style="color:var(--muted);font-size:0.95rem">A look at some of the vacuums we've brought back to life at customers' homes across Essex.</p>
+    </div>
+    <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;max-width:1100px;margin:0 auto"></div>
+  </section>
+
+  <section class="cta-section" id="book">
+    <h2>We Come To You — Book Your Home Visit</h2>
+    <p>Fixed call-out fee · Parts quoted separately · 3-month guarantee · Same-day often available</p>
+    <div class="cta-actions">
+      <a href="mailto:hello@domestix.co.uk" class="btn-white"><svg width="17" height="17" style="stroke:var(--green)"><use href="#ic-calendar"/></svg> Book a Home Visit</a>
+      <a href="tel:01234567890" class="btn-outline"><svg width="17" height="17"><use href="#ic-phone"/></svg> 01234 567 890</a>
+    </div>
+  </section>
+
+  <section id="faq" style="background:var(--off-white)">
+    <div class="section-header" style="text-align:center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you really repair my vacuum at home? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">Yes — this is our standard service. Our technician comes to your home fully equipped. In the vast majority of cases we carry the parts needed in our van and complete the repair on the first visit. In rare cases where a specialist part needs ordering, we may need a second visit.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does your pricing work? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">We charge a fixed call-out fee for your home visit which covers diagnosis and the technician's time. Any parts needed are quoted and charged separately — so you always know the full cost before we proceed.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you repair all Dyson models? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">Yes. We repair all Dyson models including the V6, V7, V8, V10, V11, V12, V15, Ball Animal, and older cylinder models. Dyson is our speciality and we stock the most common parts in our van.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does a home repair take? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">Most repairs are completed within 30–60 minutes at your home. Our technician will always give you an honest estimate when they arrive.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a guarantee on repairs? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">Yes — all parts we fit carry a 3-month guarantee. If a part fails within 3 months, we'll return to your home and replace it at no extra cost.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What areas do you cover? <svg class="icon faq-chevron" width="18" height="18"><use href="#ic-chevron-down"/></svg></button><div class="faq-a">We're based in Chelmsford and cover a 30-mile radius across Essex, including Southend, Colchester, Basildon, Brentwood, Harlow, Romford, Ilford and all surrounding areas.</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Domestix</div>
+        <p>At-home vacuum repair and servicing across Essex. Dyson specialists and all major brands. We come to you — fixed call-out fee, transparent pricing.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a onclick="showBrand('dyson')">Dyson Repair</a></li>
+          <li><a onclick="showBrand('shark')">Shark Repair</a></li>
+          <li><a onclick="showBrand('miele')">Miele Repair</a></li>
+          <li><a onclick="showBrand('henry')">Henry Repair</a></li>
+          <li><a onclick="showBrand('hoover')">Hoover Repair</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Areas</h5>
+        <ul>
+          <li><a onclick="showLocation('chelmsford')">Chelmsford</a></li>
+          <li><a onclick="showLocation('southend')">Southend-on-Sea</a></li>
+          <li><a onclick="showLocation('colchester')">Colchester</a></li>
+          <li><a onclick="showLocation('basildon')">Basildon</a></li>
+          <li><a onclick="showLocation('romford')">Romford</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Domestix. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service</span>
+    </div>
+  </footer>
+</div>
+
+<!-- LOCATION PAGE -->
+<div id="page-location" class="page"><div id="location-content"></div></div>
+<!-- BRAND PAGE -->
+<div id="page-brand" class="page"><div id="brand-content"></div></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// GALLERY — replace these with your real photo URLs when ready
+const galleryPhotos = [
+  // { src: 'https://your-domain.com/photos/dyson-repair-1.jpg', caption: 'Dyson V11 — Chelmsford' },
+  // Add your real photos above. While empty, placeholders are shown.
+];
+
+const galleryLabels = [
+  'Dyson V11 Repair','Dyson V8 Service','Miele C3 Fix','Henry Overhaul',
+  'Shark Cordless','Dyson Ball Repair','Battery Swap','Dyson V15 Service',
+];
+
+function buildGallery() {
+  const grid = document.getElementById('gallery-grid');
+  if (!grid) return;
+  if (galleryPhotos.length > 0) {
+    grid.innerHTML = galleryPhotos.map((p,i) => `
+      <div class="gallery-item" onclick="openLightbox('${p.src}','${p.caption||''}')">
+        <img src="${p.src}" alt="${p.caption||'Vacuum repair photo '+(i+1)}" loading="lazy" onerror="this.parentElement.outerHTML=placeholderHTML(${i})">
+        <div class="gallery-overlay"><span>${p.caption||''}</span></div>
+      </div>`).join('');
+  } else {
+    grid.innerHTML = galleryLabels.map((l,i) => placeholderHTML(i,l)).join('');
+  }
+}
+
+function placeholderHTML(i, label) {
+  const labels = ['Dyson V11 Repair','Dyson V8 Service','Miele C3 Fix','Henry Overhaul','Shark Cordless','Dyson Ball Repair','Battery Swap','Dyson V15 Service'];
+  const l = label || labels[i] || 'Your photo here';
+  return `<div class="gallery-placeholder">
+    <svg width="32" height="32" style="stroke:var(--border)"><use href="#ic-vacuum"/></svg>
+    <strong style="color:var(--dark);font-size:0.85rem">${l}</strong>
+    <span>Photo coming soon</span>
+  </div>`;
+}
+
+function openLightbox(src, caption) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+buildGallery();
+
+const starsSVG = [1,2,3,4,5].map(()=>`<svg width="13" height="13" style="fill:var(--gold)"><use href="#ic-star"/></svg>`).join('');
+const ic = (id, size=16, style='stroke:var(--green)') => `<svg width="${size}" height="${size}" style="${style};flex-shrink:0"><use href="#ic-${id}"/></svg>`;
+
+const locations = {
+  chelmsford:{name:"Chelmsford",postcodes:"CM1, CM2, CM3",nearby:"Writtle, Great Baddow, Springfield, Broomfield, Witham"},
+  southend:{name:"Southend-on-Sea",postcodes:"SS1, SS2, SS9",nearby:"Westcliff-on-Sea, Leigh-on-Sea, Shoeburyness, Rochford"},
+  colchester:{name:"Colchester",postcodes:"CO1, CO2, CO3",nearby:"Stanway, Tiptree, West Mersea, Wivenhoe"},
+  basildon:{name:"Basildon",postcodes:"SS13, SS14, SS15",nearby:"Pitsea, Laindon, Wickford, Billericay"},
+  brentwood:{name:"Brentwood",postcodes:"CM13, CM14, CM15",nearby:"Shenfield, Hutton, Ingatestone, Pilgrims Hatch"},
+  harlow:{name:"Harlow",postcodes:"CM17, CM18, CM19, CM20",nearby:"Sawbridgeworth, Epping, Bishop's Stortford"},
+  romford:{name:"Romford",postcodes:"RM1, RM2, RM3",nearby:"Hornchurch, Upminster, Gidea Park, Harold Wood"},
+  ilford:{name:"Ilford",postcodes:"IG1, IG2, IG3",nearby:"Seven Kings, Goodmayes, Chadwell Heath, Barking"},
+  braintree:{name:"Braintree",postcodes:"CM7, CM8",nearby:"Witham, Halstead, Coggeshall, Dunmow"},
+  witham:{name:"Witham",postcodes:"CM8",nearby:"Hatfield Peverel, Kelvedon, Silver End, Braintree"},
+  maldon:{name:"Maldon",postcodes:"CM9",nearby:"Burnham-on-Crouch, Heybridge, Danbury"},
+  epping:{name:"Epping",postcodes:"CM16",nearby:"Loughton, Theydon Bois, North Weald, Ongar"},
+  billericay:{name:"Billericay",postcodes:"CM11, CM12",nearby:"Wickford, Brentwood, Stock, Galleywood"},
+  rayleigh:{name:"Rayleigh",postcodes:"SS6",nearby:"Hockley, Rochford, Wickford, Hawkwell"},
+};
+
+const brands = {
+  dyson:{
+    name:"Dyson", tag:"Our Speciality",
+    heroImg:"https://images.ctfassets.net/oqg67vmf6aj9/2UMzr01JlSHkViNpBdxsNo/a2d6c83d3a90c73b46f6f04e088bcf0b/v15_detect_hero.png",
+    models:[
+      {name:"V15 Detect",img:"https://images.ctfassets.net/oqg67vmf6aj9/2UMzr01JlSHkViNpBdxsNo/a2d6c83d3a90c73b46f6f04e088bcf0b/v15_detect_hero.png"},
+      {name:"V11",img:"https://images.ctfassets.net/oqg67vmf6aj9/3nkSRxNkm3sH2zv1X2vfGD/e7e8c093e5b2ad0f0d7c4ad7e3e3e9b1/v11_absolute_hero.png"},
+      {name:"V8",img:"https://images.ctfassets.net/oqg67vmf6aj9/4xK9p2c1RvGN3u2X0Qf8fF/v8_absolute_hero.png"},
+      {name:"V6",img:"https://images.ctfassets.net/oqg67vmf6aj9/v6_hero.png"},
+      {name:"Ball Animal",img:"https://www.dyson.co.uk/content/dam/dyson/images/products/primary/338702-01.png"},
+      {name:"Cyclone V10",img:"https://images.ctfassets.net/oqg67vmf6aj9/v10_hero.png"},
+    ],
+    faults:["Loss of suction or poor pickup","Battery not charging or short run time","Brush bar not spinning","Loud, unusual or rattling noise","Pulsing on and off","Filter warning light","Blocked cyclone or bin assembly"],
+  },
+  shark:{
+    name:"Shark", tag:null,
+    heroImg:"https://cdn.sharkclean.co.uk/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/z/iz320uk_2.png",
+    models:[
+      {name:"Anti Hair Wrap",img:"https://cdn.sharkclean.co.uk/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/z/iz320uk_2.png"},
+      {name:"Flexology",img:"https://cdn.sharkclean.co.uk/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/z/iz251uk.png"},
+      {name:"DuoClean",img:"https://cdn.sharkclean.co.uk/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/f/if200uk_1.png"},
+    ],
+    faults:["Loss of suction","Brush roll not spinning","Battery failing or not charging","Motor problems","Unit not turning on"],
+  },
+  miele:{
+    name:"Miele", tag:null,
+    heroImg:"https://www.miele.co.uk/media/products/1440x1440/10604580_1440x1440.png",
+    models:[
+      {name:"Complete C3",img:"https://www.miele.co.uk/media/products/1440x1440/10604580_1440x1440.png"},
+      {name:"Classic C1",img:"https://www.miele.co.uk/media/products/1440x1440/11032210_1440x1440.png"},
+      {name:"Triflex",img:"https://www.miele.co.uk/media/products/1440x1440/11742200_1440x1440.png"},
+    ],
+    faults:["Loss of suction","Motor noise or vibration","Dustbag sensor fault","Hose or wand damage","Power or electrical issues"],
+  },
+  henry:{
+    name:"Henry", tag:null,
+    heroImg:"https://www.henryvacuum.com/wp-content/uploads/2020/09/Henry-HVR-200.png",
+    models:[
+      {name:"Henry HVR 200",img:"https://www.henryvacuum.com/wp-content/uploads/2020/09/Henry-HVR-200.png"},
+      {name:"Hetty",img:"https://www.henryvacuum.com/wp-content/uploads/2020/09/Hetty-HET-200.png"},
+      {name:"Henry Quick",img:"https://www.henryvacuum.com/wp-content/uploads/2021/05/Henry-Quick-HQN-340.png"},
+    ],
+    faults:["Loss of suction","Motor failure or burning smell","Hose blockage or split","Power cable damage","Filter clogging"],
+  },
+  hoover:{
+    name:"Hoover", tag:null,
+    heroImg:"https://www.hoover.co.uk/medias/HF9-HF910H-011.png?context=bWFzdGVyfHJvb3R8MTYwOTgwfGltYWdlL3BuZ3xoMGIvaDlkLzk1NjcxOTM4NDM0ODYucG5nfDQyMGY0NWMwNjk4NmU0NjNkNjU4MTk2YTBjMzJkNGI1YzIwN2IzNmEwOWE0ZTkzNDk3NGViMTg4MzJhNTFmZmM",
+    models:[
+      {name:"H-Free 300",img:"https://www.hoover.co.uk/medias/HF9-HF910H-011.png?context=bWFzdGVyfHJvb3R8MTYwOTgwfGltYWdlL3BuZ3xoMGIvaDlkLzk1NjcxOTM4NDM0ODYucG5nfDQyMGY0NWMwNjk4NmU0NjNkNjU4MTk2YTBjMzJkNGI1YzIwN2IzNmEwOWE0ZTkzNDk3NGViMTg4MzJhNTFmZmM"},
+      {name:"H-Upright 700",img:"https://www.hoover.co.uk/medias/HU71-HU71HM01.png?context=bWFzdGVyfHJvb3R8NzYyMzF8aW1hZ2UvcG5nfGg5MS9oNTYvOTM5OTkzOTk3OTQyMi5wbmd8OWEwMWFlMmRjNTFiZDM0ZjQ4MTIyN2VkMzNlZGIwN2E1NTNmNjY3YTYwMWZhYjI3YzA5MGUxNjI5ZTJlYzRkNw"},
+    ],
+    faults:["Loss of suction","Brush bar not turning","Belt snapping or slipping","Motor problems","Power or switch faults"],
+  },
+};
+
+const ctaCard = () => `
+  <div class="sp-cta-card">
+    <div class="card-title">Book a Home Visit</div>
+    <div class="card-sub">We come to you — same-day often available</div>
+    <a href="mailto:hello@domestix.co.uk" class="cta-btn-main">${ic('calendar',17,'stroke:white')} Book Online Now</a>
+    <div class="cta-divider">or</div>
+    <a href="tel:01234567890" class="cta-btn-call">${ic('phone',17,'stroke:white')} 01234 567 890</a>
+    <div class="cta-trust">
+      <div class="cta-trust-item">${ic('pound',14,'stroke:var(--muted)')} Fixed call-out fee</div>
+      <div class="cta-trust-item">${ic('shield',14,'stroke:var(--muted)')} 3-month parts guarantee</div>
+      <div class="cta-trust-item">${ic('bolt',14,'stroke:var(--muted)')} Same-day often available</div>
+      <div class="cta-trust-item"><svg width="14" height="14" style="fill:var(--gold)"><use href="#ic-star"/></svg> 4.9 Google Rating</div>
+    </div>
+  </div>`;
+
+const sidebar = (name) => `
+  <div class="sp-sidebar">
+    <div class="sw">
+      <div style="font-size:0.9rem;font-weight:800;color:var(--dark);margin-bottom:0.8rem">Book a Home Visit</div>
+      <a href="mailto:hello@domestix.co.uk" class="cta-btn-main" style="font-size:0.88rem">${ic('calendar',16,'stroke:white')} Book Online</a>
+      <div class="cta-divider" style="font-size:0.72rem;margin:0.4rem 0">or call us</div>
+      <a href="tel:01234567890" class="cta-btn-call" style="font-size:0.88rem">${ic('phone',16,'stroke:white')} 01234 567 890</a>
+      <div class="cta-trust" style="margin-top:0.8rem;padding-top:0.8rem">
+        <div class="cta-trust-item">${ic('home',14,'stroke:var(--muted)')} We come to your home</div>
+        <div class="cta-trust-item">${ic('pound',14,'stroke:var(--muted)')} Fixed call-out fee</div>
+        <div class="cta-trust-item">${ic('shield',14,'stroke:var(--muted)')} 3-month guarantee</div>
+      </div>
+    </div>
+    <div class="sw">
+      <h4><svg width="16" height="16" style="fill:var(--gold)"><use href="#ic-star"/></svg> What Customers Say</h4>
+      <div class="sidebar-stars">${starsSVG}</div>
+      <div class="sidebar-review">"Fixed in my home in under an hour — I didn't have to move it anywhere. Brilliant service."</div>
+      <div class="sidebar-reviewer">Sarah M.${name?' — '+name:''}</div>
+    </div>
+    <div class="sw" style="background:var(--green-light);border-color:#b6dfc8">
+      <h4 style="color:var(--green)">${ic('leaf',16,'stroke:var(--green)')} Repair, Don't Replace</h4>
+      <p style="font-size:0.82rem;color:var(--text);line-height:1.6;margin:0">Most repairs cost up to <strong>80% less</strong> than buying new — done in your home, saving you time too.</p>
+    </div>
+  </div>`;
+
+const inlineCTA = (msg) => `
+  <div class="inline-cta">
+    <div><p>${msg}</p><span>Fixed call-out · At-home service · 3-month guarantee</span></div>
+    <a href="mailto:hello@domestix.co.uk">Book Now ${ic('arrow-right',15,'stroke:white')}</a>
+  </div>`;
+
+const bottomCTA = (h2, p) => `
+  <div class="sp-bottom-cta">
+    <h2>${h2}</h2><p>${p}</p>
+    <div class="bottom-cta-actions">
+      <a href="mailto:hello@domestix.co.uk" class="btn-white">${ic('calendar',17,'stroke:var(--green)')} Book a Home Visit</a>
+      <a href="tel:01234567890" class="btn-outline">${ic('phone',17,'stroke:white')} 01234 567 890</a>
+    </div>
+  </div>`;
+
+function showLocation(id) {
+  const l = locations[id]; if (!l) return;
+  document.getElementById('location-content').innerHTML = `
+    <div class="subpage-hero">
+      <div class="subpage-hero-inner">
+        <div>
+          <button class="subpage-back" onclick="showHome()">${ic('arrow-left',15,'stroke:rgba(255,255,255,0.7)')} Back to Domestix</button>
+          <div class="sp-label">At-Home Vacuum Repair · ${l.name}</div>
+          <h1>Vacuum Repair in ${l.name} — We Come To You</h1>
+          <p>Domestix provides a fully at-home vacuum repair service in ${l.name}. Our technician visits your home, diagnoses the fault and repairs it on the spot — no need to take your vacuum anywhere.</p>
+          <div class="sp-badges">
+            <span class="sp-badge">${ic('home',13,'stroke:rgba(255,255,255,0.9)')} At-home service</span>
+            <span class="sp-badge">${ic('bolt',13,'stroke:rgba(255,255,255,0.9)')} Same-day available</span>
+            <span class="sp-badge">${ic('shield',13,'stroke:rgba(255,255,255,0.9)')} 3-month guarantee</span>
+            <span class="sp-badge">${ic('pound',13,'stroke:rgba(255,255,255,0.9)')} Fixed call-out</span>
+          </div>
+        </div>
+        ${ctaCard()}
+      </div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-main">
+        <h2>At-Home Vacuum Repairs in ${l.name}</h2>
+        <p>Whether your Dyson has lost suction, your cordless won't hold charge, or your cylinder is making a strange noise — Domestix comes to you. We serve all ${l.postcodes} postcodes and complete most repairs on the first visit, in under an hour, in your home.</p>
+        <ul>
+          <li>${ic('vacuum',16,'stroke:var(--green)')}<div><strong>Dyson Repair</strong> — all models: V6, V7, V8, V10, V11, V12, V15 and Ball, repaired in your home</div></li>
+          <li>${ic('service',16,'stroke:var(--green)')}<div><strong>Annual Vacuum Service</strong> — full at-home strip-down, deep clean and performance check</div></li>
+          <li>${ic('battery',16,'stroke:var(--green)')}<div><strong>Battery Replacement</strong> — replacement batteries carried in our van, fitted at your home</div></li>
+          <li>${ic('motor',16,'stroke:var(--green)')}<div><strong>Motor &amp; Suction Repair</strong> — Shark, Miele, Hoover, Henry, Vax and more</div></li>
+          <li>${ic('home',16,'stroke:var(--green)')}<div><strong>Small Appliance Repair</strong> — ask us about your item</div></li>
+        </ul>
+        ${inlineCTA(`Book your at-home vacuum repair in ${l.name} today`)}
+        <h2>Covering All of ${l.name} &amp; Nearby Areas</h2>
+        <p>We visit homes across all ${l.postcodes} postcodes, including ${l.nearby}. Our technician comes fully equipped — there is no need to carry your vacuum anywhere or arrange drop-off.</p>
+        <h2>Why ${l.name} Customers Choose Domestix</h2>
+        <ul>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>We come to your home — no lifting, no drop-off, no waiting</div></li>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>Most repairs completed in under an hour on the first visit</div></li>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>Fixed call-out fee — parts quoted separately, no surprises</div></li>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>3-month guarantee on all parts fitted</div></li>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>Save up to 80% compared to buying a new vacuum</div></li>
+          <li>${ic('check',16,'stroke:var(--green)')}<div>Dyson specialists — most common parts carried in our van</div></li>
+        </ul>
+      </div>
+      ${sidebar(l.name)}
+    </div>
+    ${bottomCTA(`At-Home Vacuum Repair in ${l.name}`, `Our technician comes to you — no need to take your vacuum anywhere. Same-day visits often available across ${l.name} and surrounding areas.`)}`;
+  showPage('location');
+}
+
+function showBrand(id) {
+  const b = brands[id]; if (!b) return;
+  const modelCards = b.models.map(m=>`
+    <div class="model-card">
+      <img src="${m.img}" alt="${b.name} ${m.name}" onerror="this.style.display='none'">
+      <span>${m.name}</span>
+    </div>`).join('');
+  document.getElementById('brand-content').innerHTML = `
+    <div class="subpage-hero">
+      <div class="subpage-hero-inner">
+        <div>
+          <button class="subpage-back" onclick="showHome()">${ic('arrow-left',15,'stroke:rgba(255,255,255,0.7)')} Back to Domestix</button>
+          <div class="sp-label">At-Home Repair Specialist${b.tag?' · '+b.tag:''}</div>
+          <h1>${b.name} Vacuum Repair — Fixed In Your Home</h1>
+          <p>Is your ${b.name} not performing as it should? Our technician comes to your home, diagnoses the fault on the spot and repairs it — usually in under an hour. No need to take it anywhere.</p>
+          <div class="sp-badges">
+            <span class="sp-badge">${ic('home',13,'stroke:rgba(255,255,255,0.9)')} At-home service</span>
+            <span class="sp-badge">${ic('bolt',13,'stroke:rgba(255,255,255,0.9)')} Same-day available</span>
+            <span class="sp-badge">${ic('shield',13,'stroke:rgba(255,255,255,0.9)')} 3-month guarantee</span>
+            <span class="sp-badge">${ic('wrench',13,'stroke:rgba(255,255,255,0.9)')} Parts in our van</span>
+          </div>
+        </div>
+        <img class="brand-hero-img" src="${b.heroImg}" alt="${b.name} vacuum" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-main">
+        <h2>${b.name} Models We Repair At Home</h2>
+        <p>We repair all ${b.name} models at your home across Essex. Here are some of the models we see most often:</p>
+        <div class="models-gallery">${modelCards}</div>
+        <p>Not sure if we cover your specific model? Give us a call — if it's a ${b.name}, we can almost certainly help.</p>
+        <h2>Common ${b.name} Faults We Fix</h2>
+        <ul>${b.faults.map(f=>`<li>${ic('wrench',16,'stroke:var(--green)')}<div>${f}</div></li>`).join('')}<li>${ic('service',16,'stroke:var(--green)')}<div>Annual at-home service and deep clean</div></li></ul>
+        ${inlineCTA(`Got a faulty ${b.name}? We'll come to your home and fix it.`)}
+        <h2>How Our Pricing Works</h2>
+        <p>We charge a fixed call-out fee to visit your home and fully diagnose your ${b.name}. Any parts needed are quoted and confirmed before we start — so you always know the full cost. Most ${b.name} repairs save customers <strong>£150–£400</strong> compared to buying new.</p>
+        <h2>We Come To You</h2>
+        <p>No need to take your ${b.name} anywhere. Our technician arrives at your home fully equipped and carries the most common parts in the van — meaning most repairs are completed on the first visit, in under an hour.</p>
+      </div>
+      ${sidebar(null)}
+    </div>
+    ${bottomCTA(`Your ${b.name} Fixed At Home — Fast.`, `Don't replace your ${b.name} — our technician will come to your home and fix it, usually in under an hour. Same-day visits often available.`)}`;
+  showPage('brand');
+}
+
+function showPage(id) { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page-'+id).classList.add('active'); window.scrollTo(0,0); }
+function showHome() { showPage('home'); }
+function toggleMenu() { const b=document.getElementById('burger'),m=document.getElementById('mobile-menu'); b.classList.toggle('open'); m.classList.toggle('open'); document.body.style.overflow=m.classList.contains('open')?'hidden':''; }
+function closeMenu() { document.getElementById('burger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; }
+function closeThen(fn) { closeMenu(); fn(); }
+function scrollToId(id) { setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },50); }
+function toggleFaq(btn) { const a=btn.nextElementSibling,open=a.classList.contains('open'); document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open')); document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open')); if(!open){a.classList.add('open');btn.classList.add('open');} }
+</script>
+</body>
+</html>
