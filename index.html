@@ -981,7 +981,7 @@ function spHeroStart(lbl,h1,desc){return '<div class="sphero"><div class="sphi">
 function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});var pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');window.scrollTo(0,0);}
 function showHome(){updateMeta('Domestix | At-Home Appliance Repair Essex & Home Counties','Domestix — at-home appliance repair across Essex, Hertfordshire, Suffolk and Kent. Fixed call-out fee. 3-month guarantee. Call 01245 921921.');showPage('home');}
 
-var SERVICEM8_URL='https://book.servicem8.com/request_booking?uuid=3d66ea1e-11ef-4643-9995-36ddb3085a3b';
+var SERVICEM8_URL='https://book.servicem8.com/request_service_booking?strVendorUUID=3d66ea1e-11ef-4643-9995-36ddb3085a3b';
 function showBooking(){window.open(SERVICEM8_URL,'_blank');}
 
 function showBrand(id){
